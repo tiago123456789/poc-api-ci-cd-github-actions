@@ -26,4 +26,4 @@ jobs:
         with:
           webhook_id: ${{ secrets.WEBHOOK_ID }}
           webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
-          message: CI executed ${{ job.status }}.
+          message: CI of branch ${GITHUB_REF##*/} executed ${{ job.status }}.
