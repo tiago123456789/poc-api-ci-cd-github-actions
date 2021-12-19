@@ -29,4 +29,4 @@ jobs:
         with:
           webhook_id: ${{ secrets.WEBHOOK_ID }}
           webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
-          message: CI executed ${{ job.status }}.
+          message: CD executed ${{ job.status }}.
