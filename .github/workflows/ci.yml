@@ -1,4 +1,4 @@
-name: CI(continuous integration)
+name: CD(continuous deployment)
 
 on:
   pull_request: 
