@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest    
     steps:
 
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
       - name: Update the application
         uses: appleboy/ssh-action@master
         with:
@@ -29,4 +34,4 @@ jobs:
         with:
           webhook_id: ${{ secrets.WEBHOOK_ID }}
           webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
-          message: CD of branch ${{ GITHUB_REF }} executed ${{ job.status }}.
+          message: CD of branch ${{ steps.extract_branch.outputs.branch }} executed ${{ job.status }}.
