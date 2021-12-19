@@ -1,0 +1,32 @@
+name: CI(continuous integration)
+
+on:
+  push: 
+    branches: 
+      - staging
+      - master
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest    
+    steps:
+
+      - name: Update the application
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+           cd /root/apps/poc-api-ci-cd-github-actions && 
+           git pull origin master && cd /root/apps/poc-api-ci-cd-github-actions &&
+           bash deploy.sh
+
+
+      - name: Notify CI process
+        if: always()
+        uses: appleboy/discord-action@master
+        with:
+          webhook_id: ${{ secrets.WEBHOOK_ID }}
+          webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
+          message: CD executed ${{ job.status }}.
