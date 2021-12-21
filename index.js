@@ -6,8 +6,6 @@ const app = express();
 app.get("/sum/:value/:value2", (request, response) => {
     const { value, value2 } = request.params;
     response.json({
-        change: true,
-        message: "Hi, my friend",
         result: calc.sum(parseFloat(value), parseFloat(value2))
     })
 })
@@ -15,9 +13,14 @@ app.get("/sum/:value/:value2", (request, response) => {
 app.get("/multiple/:value/:value2", (request, response) => {
     const { value, value2 } = request.params;
     response.json({
-        change: true,
-        message: "Hi, my friend",
         result: calc.multiple(parseFloat(value), parseFloat(value2))
+    })
+})
+
+app.get("/subtract/:value/:value2", (request, response) => {
+    const { value, value2 } = request.params;
+    response.json({
+        result: calc.subtract(parseFloat(value), parseFloat(value2))
     })
 })
 
