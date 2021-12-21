@@ -1,4 +1,4 @@
-name: CD(continuous deployment)
+name: CI(continuous integration)
 
 
 on:
