@@ -1,4 +1,5 @@
-name: CD(continuous deployment)
+name: CI(continuous integration)
+
 
 on:
   pull_request: 
@@ -8,7 +9,7 @@ on:
       - master
 
 jobs:
-  pipeline:
+  pipeline-ci:
     runs-on: ubuntu-latest    
     steps:
 
