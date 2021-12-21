@@ -27,7 +27,7 @@ jobs:
         id: extract_branch
 
       - name: Notify CI process
-        if: always()
+        if: failure()
         uses: appleboy/discord-action@master
         with:
           webhook_id: ${{ secrets.WEBHOOK_ID }}
