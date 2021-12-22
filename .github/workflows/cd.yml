@@ -24,7 +24,9 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
            cd /root/apps/poc-api-ci-cd-github-actions && 
-           git pull origin master && cd /root/apps/poc-api-ci-cd-github-actions &&
+           git fetch &&
+           git checkout ${{ steps.extract_branch.outputs.branch }} &&
+           git pull origin ${{ steps.extract_branch.outputs.branch }} && cd /root/apps/poc-api-ci-cd-github-actions &&
            bash deploy.sh
 
 
